@@ -8,6 +8,21 @@
     <link rel="icon" href="true.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
+        /*new*/
+        .quiz-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .toggle-btn {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+         /*new*/
         body {
             background-color: #f4f6f9;
             transition: background-color 0.5s ease;
@@ -91,16 +106,16 @@
             </div>
         </div>
 
+
         <div class="container mt-4">
-            <div class="card">
+            <button id="toggle-btn" class="btn btn-primary toggle-btn">📂 Fayl yuklashni ko‘rsat</button>
+
+            <div id="file-upload-section" class="card" style="display: none;">
                 <div class="card-header"><b>Faylni yuklang .txt</b></div>
-                <a style="text-align: center" href="yordam.html">
-                    <span> Men nima qila olaman | Yordam</span>
-                </a>
-                    <div class="card-body">
+                <div class="card-body">
                     <input type="file" id="quiz-file" class="form-control" accept=".txt">
                     <small class="text-muted">
-                        <span style="color: red">Test shu ko'rinishda bo'lishi shart!!!</span>
+                        <span style="color: red">Test shu ko'rinishda bo'lishi shart:</span>
                         <br>Savol
                         <br>A. 1-Variant
                         <br>B. 2-Variant
@@ -111,9 +126,22 @@
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
+        <script>
+            document.getElementById('toggle-btn').addEventListener('click', function() {
+                let fileSection = document.getElementById('file-upload-section');
+                if (fileSection.style.display === 'none') {
+                    fileSection.style.display = 'block';
+                    this.textContent = '❌ Fayl yuklashni yashirish';
+                } else {
+                    fileSection.style.display = 'none';
+                    this.textContent = '📂 Fayl yuklashni ko‘rsat';
+                }
+            });
+        </script>
+
+
+        <script>
         class ConfettiGenerator {
             constructor(canvas) {
                 this.canvas = canvas;
@@ -336,6 +364,8 @@
         // Initialize the quiz application
         new QuizApp();
     </script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
